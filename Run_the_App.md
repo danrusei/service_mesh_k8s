@@ -1,0 +1,1 @@
+Show information about the app, run in the cluster and demonstrate it's functionality.

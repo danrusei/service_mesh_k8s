@@ -54,13 +54,18 @@ kapp version 0.34.0
 
 The below steps are documeneted within separate pages, recommended to follow in order.
 
-* [Kind Cluster - initial setup](./setup-kind/README.md)
-* [Run the microservice apllication in the cluster](Run_the_App.md)
-* **Istio**
-  * Install
-  * Mtls
-  * Traffic split
-* **Linkerd**
-  * Install
-  * Mtls
-  * Traffic split
+* ### [Kind Cluster - initial setup](./setup-kind/README.md)
+
+* ### [Run the microservice apllication in the cluster](Run_the_App.md)
+
+* ### Istio
+
+  * **Install**
+  * **Mtls**
+  * **Traffic split**
+
+* ### Linkerd
+
+  * **Install**
+  * **Mtls**
+  * **Traffic split**

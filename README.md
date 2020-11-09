@@ -32,6 +32,15 @@ Client Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.3", GitCom
 Server Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.1", GitCommit:"206bcadf021e76c27513500ca24182692aabd17e", GitTreeState:"clean", BuildDate:"2020-09-14T07:30:52Z", GoVersion:"go1.15", Compiler:"gc", Platform:"linux/amd64"}
 ```
 
+### [Skaffold](https://skaffold.dev/)
+
+Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most: writing code.
+
+```bash
+$ skaffold version
+v1.16.0
+```
+
 ### [Kapp](https://github.com/k14s/kapp)
 
 Kapp is a deployment CLI tool, which focuses on resource diffing, labeling, deployment and deletion.

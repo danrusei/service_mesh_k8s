@@ -4,7 +4,7 @@ This demo App was created by Google to showcase the use of technologies like Kub
 
 ## Application Architecture (cloned from the GCP repository)
 
-***[Check Out The App Architecture Here](./microservices-app/README.md)***
+***<a href="https://github.com/GoogleCloudPlatform/microservices-demo#service-architecture" target="_blank">Check Out The App Architecture Here</a>***
 
 ## Deploy the application
 

@@ -58,7 +58,7 @@ The below steps are documeneted within separate pages, recommended to follow in 
 
 * ### [Run the microservice apllication in the cluster](Run_the_App.md)
 
-* ### Istio
+* ### [Istio](./sm_Istio/README.md)
 
   * **Install**
   * **Mtls**

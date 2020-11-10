@@ -60,8 +60,8 @@ The below steps are documeneted within separate pages, recommended to follow in 
 
 * ### [Istio](./sm_Istio/README.md)
 
-  * **Install**
-  * **Mtls**
+  * **[Install](./sm_Istio/Install.md)**
+  * **Security**
   * **Traffic split**
 
 * ### Linkerd

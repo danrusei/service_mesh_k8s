@@ -143,4 +143,6 @@ kubectl port-forward deployment/frontend 8080:8080
 
 Now you should be able to see the **Online Boutique** demo site running in your cluster by accessing the **http://localhost:8080** address.
 
+!!!!!!!!!!!!!!!!https://istio.io/latest/docs/ops/diagnostic-tools/istioctl/ allows you to retrieve information about proxy configuration using 
+
 That's pretty neat, but this is just the preparation to start testing the Service Meshes.

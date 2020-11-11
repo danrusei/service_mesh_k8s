@@ -61,6 +61,8 @@ The below steps are documeneted within separate pages, recommended to follow in 
 * ### [Istio](./sm_Istio/README.md)
 
   * **[Install](./sm_Istio/Install.md)**
+    * **[Installed components](./sm_Istio/Installed_components.md)**
+    * **[Integrations](./sm_Istio/Integrations.md)**
   * **Security**
   * **Traffic split**
 

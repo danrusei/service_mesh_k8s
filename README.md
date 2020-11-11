@@ -50,19 +50,18 @@ $ kapp version
 kapp version 0.34.0
 ```
 
-## Run the application
+## Service Messhes
 
 The below steps are documeneted within separate pages, recommended to follow in order.
 
 * ### [Kind Cluster - initial setup](./setup-kind/README.md)
-
-* ### [Run the microservice apllication in the cluster](Run_the_App.md)
 
 * ### [Istio](./sm_Istio/README.md)
 
   * **[Install](./sm_Istio/Install.md)**
     * **[Installed components](./sm_Istio/Installed_components.md)**
     * **[Integrations](./sm_Istio/Integrations.md)**
+  * **[Run the microservice apllication in the cluster](Application_Install.md)**
   * **Security**
   * **Traffic split**
 

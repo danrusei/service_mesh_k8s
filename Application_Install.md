@@ -202,4 +202,8 @@ istioctl dashboard grafana
 http://localhost:3000
 ```
 
-!!!!!! show a picture
+Pictures from Grafana:
+
+![grafana general](grafana_general.png "Grafana General")
+![grafana inbound](grafana_inbound.png "Grafana Inbound")
+![grafana general](grafana_outbound.png "Grafana Outbound")

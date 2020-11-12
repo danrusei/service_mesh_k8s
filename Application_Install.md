@@ -204,6 +204,6 @@ http://localhost:3000
 
 Pictures from Grafana:
 
-![grafana general](grafana_general.png "Grafana General")
-![grafana inbound](grafana_inbound.png "Grafana Inbound")
-![grafana general](grafana_outbound.png "Grafana Outbound")
+![grafana general](./images/grafana_general.png "Grafana General")
+![grafana inbound](./images/grafana_inbound.png "Grafana Inbound")
+![grafana general](./images/grafana_outbound.png "Grafana Outbound")

@@ -78,3 +78,4 @@ istio-egressgateway-844fd8c8c6-dhbnt.istio-system      SYNCED     SYNCED     SYN
 istio-ingressgateway-67fc4949df-bh2gl.istio-system     SYNCED     SYNCED     SYNCED     NOT SENT     istiod-766d57484-bnpqd     1.7.4
 ```
 
+**[Back to Main Page](../README.md)**

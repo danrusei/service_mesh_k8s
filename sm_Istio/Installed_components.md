@@ -179,3 +179,6 @@ Istio is comming with a collection of CRD's which are used to manage how the ser
 * **requestauthentications.security.istio.io** - defines what request authentication methods are supported by a workload.
 
 In this Istio version some CRDs may be deprecated but are kept for backward compatibility. `Mixer is deprecated. The functionality provided by Mixer is being moved into the Envoy proxies. Use of Mixer with Istio will only be supported through the 1.7 release of Istio.`.
+
+**[Back to Main Page](../README.md)**
+

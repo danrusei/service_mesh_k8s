@@ -65,3 +65,5 @@ Now you can issue the below command which port forward to the right deployment a
 istioctl dashboard grafana
 http://localhost:3000
 ```
+
+**[Back to Main Page](../README.md)**

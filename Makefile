@@ -10,8 +10,9 @@ destroy:
 	kind delete cluster --name $(cluster_name)
 
 ## istio_install: install Istio Service Mesh (demo profile)
+# global.proxy.privileged is set to TRUE so I can use tcpdump to verify if traffic is encrypted or not.
 istio_install:
-	./istio-1.7.4/bin/istioctl install --set profile=demo
+	./istio-1.7.4/bin/istioctl install --set profile=demo --set values.global.proxy.privileged=true
 
 ## istio_prepare: labels default namespace with istio-injection=enabled 
 istio_prepare:
@@ -21,6 +22,7 @@ istio_prepare:
 istio_integrations:
 	kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.7/samples/addons/prometheus.yaml
 	kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.7/samples/addons/grafana.yaml
+	# kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/kiali.yaml
 
 ## deploy: deploy the microservices App
 deploy:

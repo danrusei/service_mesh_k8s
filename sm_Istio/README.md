@@ -20,9 +20,4 @@ An Istio service mesh is logically split into a data plane and a control plane.
 **The data plane** is composed of a set of intelligent proxies (Envoy) deployed as sidecars. These proxies mediate and control all network communication between microservices. They also collect and report telemetry on all mesh traffic.  
 **The control plane** manages and configures the proxies to route traffic.
 
-Tasks:
-
-* Install
-* Security
-* Observability
-* Traffic Management
+**[Back to Main Page](../README.md)**

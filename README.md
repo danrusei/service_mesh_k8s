@@ -54,19 +54,17 @@ kapp version 0.34.0
 
 The below steps are documeneted within separate pages, recommended to follow in order.
 
-* ### [Kind Cluster - initial setup](./setup-kind/README.md)
-
-* ### [Istio](./sm_Istio/README.md)
-
-  * **[Install](./sm_Istio/Install.md)**
-    * **[Installed components](./sm_Istio/Installed_components.md)**
-    * **[Integrations](./sm_Istio/Integrations.md)**
-  * **[Run the microservice apllication in the cluster](Application_Install.md)**
-  * **Security**
-  * **Traffic split**
-
-* ### Linkerd
-
-  * **Install**
-  * **Mtls**
-  * **Traffic split**
+* **[Kind Cluster - initial setup](./setup-kind/README.md)**
+* **[Istio](./sm_Istio/README.md)**
+  * [Install](./sm_Istio/Install.md)
+    * [Installed components](./sm_Istio/Installed_components.md)
+    * [Integrations](./sm_Istio/Integrations.md)
+  * [Run the microservice apllication in the cluster](Application_Install.md)
+  * [Security](./sm_Istio/Security.md)
+    * [Authentication](./sm_Istio/Authentication.md)
+    * [Authorization](./sm_Istio/Authorization.md)
+  * Traffic split
+* **Linkerd**
+  * Install
+  * Mtls
+  * Traffic split

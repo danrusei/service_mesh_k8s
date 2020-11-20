@@ -16,8 +16,10 @@ istio_install:
 ```
 
 ```bash
-$kubectl exec -ndefault "$(kubectl get pod -ndefault -lapp=checkoutservice -ojsonpath={.items..metadata.name})" -c istio-proxy -- sudo tcpdump dst port 80  -A
+$ kubectl exec -ndefault "$(kubectl get pod -ndefault -lapp=recommendationservice -ojsonpath={.items..metadata.name})" -c istio-proxy -- sudo tcpdump dst port 8080  -A
 ```
+
+try to disable mtls and receive unautheticated traffic !!!!!
 
 
 **[Back to Main Page](../README.md)**

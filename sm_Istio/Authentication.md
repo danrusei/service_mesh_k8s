@@ -1,4 +1,4 @@
-# Istio Authnetication & MTLS
+# Istio Authentication & MTLS
 
 Istio provides two types of authentication:
 
@@ -25,24 +25,24 @@ Peer authentication policies specify the mutual TLS mode Istio enforces on targe
 * STRICT: Workloads only accept mutual TLS traffic.
 * DISABLE: Mutual TLS is disabled. From a security perspective, you shouldn’t use this mode unless you provide your own security solution.
 
-When peer authentication policy is unset, the **Permissive** mode is the default. Therefore after the application is deployed with sidecar installed along with the application container the traffic between microservices are secured by default.
+When peer authentication policy is unset, the **Permissive** mode is the default. If the sidecar is installed along with the application container the traffic between microservices are secured by default.
 
-To check the above statement I installed Istio with values.global.proxy.privileged set to TRUE in order to use tcpdump to verify if traffic is encrypted or not. Necessary in this case for this step but not for the other.
+To check the above statement I installed Istio with `values.global.proxy.privileged` set to `TRUE`, that allow me to use ***tcpdump*** to verify if traffic is encrypted or not. Needed for this step but not required for the other.
 
 ```makefile
 istio_install:
 	./istio-1.7.4/bin/istioctl install --set profile=demo --set values.global.proxy.privileged=true
 ```
 
-## Default deployment with sidecar on each service
+## Default install -- sidecar for each deployment
 
-Let's examine the traffic between `loadgenerator` and `frontend` service. The reason I took these 2 services as the traffic is http, all the other services are using GRPC, therefore the message is sent in binary format.
+Let's examine the traffic between `loadgenerator` and `frontend` service. I took these 2 services as the traffic between them is  http rest. All the other services are using GRPC, therefore the message is sent in binary format.
 
 ```bash
 $ kubectl exec -ndefault "$(kubectl get pod -ndefault -lapp=loadgenerator -ojsonpath={.items..metadata.name})" -c istio-proxy -- sudo tcpdump dst port 8080  -A
 ```
 
-The traffic is encrypted, you'll see some gelbrish like this:
+The traffic is encrypted, you'll get some gelbrish like this:
 
 ```bash
 E..A.3@.@.?o
@@ -53,6 +53,8 @@ F...+. %.................1.	.Z........\s3...z......h..J..C...Y...8....m]ly(K.T+v
 
 ## Disable sidecar on frontend service
 
+During migration you may have deployments without a sidecar that are supposed to work with the ones which are already migrated. Let's exemplify it by disabling the default sidecard inject for the frontend deployment. This can be done by adding `sidecar.istio.io/inject: "false"` annotation  , which overrides the namespace scope.
+
 ```yaml
 template:
     metadata:
@@ -60,10 +62,10 @@ template:
         app: frontend
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "true"
-        sidecar.istio.io/inject: "false
+        sidecar.istio.io/inject: "false"
 ```
 
-
+Below are the pods and associated containers. The frontend deployment has no istio sidecar.
 
 ```bash
 $ kubectl get pods -n default -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n'
@@ -103,8 +105,7 @@ shippingservice:a4c5224d30c1a800474ddb6cef9d5869bf0b8eb0192d2eee868b4f3fc8dd9259
 docker.io/istio/proxyv2:1.7.4
 ```
 
-
-
+And the traffic continue to work, and more that this the request is not encrypted and can be analyzed using tcpdump.
 
 ```bash
 GET /product/L9ECAV7KIM HTTP/1.1
@@ -125,9 +126,21 @@ x-b3-sampled: 1
 content-length: 0
 ```
 
-## Enforce the Strict authentication policy
+## Enforce Strict authentication policy
 
-!!!!!NED TO demonstrate that traffic STOP with security STRICT on istio authentication policy
-try to disable mtls and receive unautheticated traffic !!!!!
+Once all deployments are running with an istio sidecar, you can enfore MTLS between all microservices within the namespace.
+
+```yaml
+apiVersion: "security.istio.io/v1beta1"
+kind: "PeerAuthentication"
+metadata:
+  name: "enforce-strict-default"
+  namespace: "default"
+spec:
+  mtls:
+    mode: STRICT
+```
+
+Or you can enable it per workload as described [here](https://istio.io/latest/docs/tasks/security/authentication/authn-policy/#enable-mutual-tls-per-workload). It allows you to refine the mutual TLS settings per port, like enforcing mtls for all ports except the one define under `portLevelMtls`.
 
 **[Back to Main Page](../README.md)**

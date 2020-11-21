@@ -105,7 +105,7 @@ shippingservice:a4c5224d30c1a800474ddb6cef9d5869bf0b8eb0192d2eee868b4f3fc8dd9259
 docker.io/istio/proxyv2:1.7.4
 ```
 
-And the traffic continue to work, and more that this the request is not encrypted and can be analyzed using tcpdump.
+And the traffic continue to work, and more that this the request is not encrypted and can be analyzed using tcpdump. It's still working because the default peerauthentication mode is `PERMISSIVE`.
 
 ```bash
 GET /product/L9ECAV7KIM HTTP/1.1

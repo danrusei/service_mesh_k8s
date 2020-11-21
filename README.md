@@ -12,7 +12,7 @@ The below steps are documeneted within separate pages, recommended to follow in 
   * [Install](./sm_Istio/Install.md)
     * [Installed components](./sm_Istio/Installed_components.md)
     * [Integrations](./sm_Istio/Integrations.md)
-  * [Run the microservice apllication in the cluster](Application_Install.md)
+  * [Deploy the microservice apllication in the cluster](Application_Install.md)
   * [Security](./sm_Istio/Security.md)
     * [Authentication & MTLS](./sm_Istio/Authentication.md)
     * [Authorization](./sm_Istio/Authorization.md)

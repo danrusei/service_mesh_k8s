@@ -1,6 +1,26 @@
 # K8S Service Meshes
 
-The intention of this project is to test the basic functionalities to a number of Service Meshes, running in kubernetes.
+Test Kubernetes Service Meshes basic functionalities. The intention is to be able to reproduce pretty fast the below tests of your Service Mesh of choice.  
+Contributions are welcomed, so please submit issues and/or PRs.
+
+## Service Messhes
+
+The below steps are documeneted within separate pages, recommended to follow in order.
+
+* **[Kind Cluster - initial setup](./setup-kind/README.md)**
+* **[Istio](./sm_Istio/README.md)**
+  * [Install](./sm_Istio/Install.md)
+    * [Installed components](./sm_Istio/Installed_components.md)
+    * [Integrations](./sm_Istio/Integrations.md)
+  * [Run the microservice apllication in the cluster](Application_Install.md)
+  * [Security](./sm_Istio/Security.md)
+    * [Authentication & MTLS](./sm_Istio/Authentication.md)
+    * [Authorization](./sm_Istio/Authorization.md)
+  * Traffic split
+* **Linkerd**
+  * Install
+  * Security
+  * Traffic split
 
 ## The Microservice App
 
@@ -8,7 +28,7 @@ Before deploying any Service Mesh in the Kubernetes Cluster we need a microservi
 One great example that can be used under the Apache 2.0 license is the [GCP microservices-demo](https://github.com/GoogleCloudPlatform/microservices-demo) demo app. It simulates a real world distributed application with services written in **Go**, **Python**, **Java**, **Node.js** and **C#**.  
 This is the perfect App to showcase the Service Meshes benefits. It is impractical to incorporate service discovery, load balancing, failure recovery, metrics, and monitoring, A/B testing, canary rollouts, rate limiting, within the application itself especially when the entire stack is written in multiple languages. A solution to this in Kubernetes is the service mesh.  
 
-## Tools & Initial setup
+## Tools
 
 I'm using the following tools:
 
@@ -36,6 +56,8 @@ Server Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.1", GitCom
 
 Skaffold handles the workflow for building, pushing and deploying your application, allowing you to focus on what matters most: writing code.
 
+> Although deploying the App with `skaffold` is preferable in order to see the application changes in real time, I might switch between using it and the [release packages](./microservices-app/release) for faster reproducibility and replicability.
+
 ```bash
 $ skaffold version
 v1.16.0
@@ -49,22 +71,3 @@ Kapp is a deployment CLI tool, which focuses on resource diffing, labeling, depl
 $ kapp version
 kapp version 0.34.0
 ```
-
-## Service Messhes
-
-The below steps are documeneted within separate pages, recommended to follow in order.
-
-* **[Kind Cluster - initial setup](./setup-kind/README.md)**
-* **[Istio](./sm_Istio/README.md)**
-  * [Install](./sm_Istio/Install.md)
-    * [Installed components](./sm_Istio/Installed_components.md)
-    * [Integrations](./sm_Istio/Integrations.md)
-  * [Run the microservice apllication in the cluster](Application_Install.md)
-  * [Security](./sm_Istio/Security.md)
-    * [Authentication](./sm_Istio/Authentication.md)
-    * [Authorization](./sm_Istio/Authorization.md)
-  * Traffic split
-* **Linkerd**
-  * Install
-  * Mtls
-  * Traffic split

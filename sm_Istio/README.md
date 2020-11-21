@@ -14,7 +14,7 @@ You add Istio support to services by deploying a special sidecar proxy throughou
 
 ## Architecture
 
-![Istio Arch](istio.svg "Istio Architecture")
+![Istio Arch](./images/istio.svg "Istio Architecture")
 
 An Istio service mesh is logically split into a data plane and a control plane.  
 **The data plane** is composed of a set of intelligent proxies (Envoy) deployed as sidecars. These proxies mediate and control all network communication between microservices. They also collect and report telemetry on all mesh traffic.  

@@ -132,7 +132,7 @@ The ClusterRoleBinding assign the above ClusterRole to the istiod service accoun
 Kubernetes admission controllers are plugins that govern and enforce how the cluster is used. They can be thought of as a gatekeeper that intercept (authenticated) API requests and may change the request object or deny the request altogether. The admission control process has two phases: the mutating phase is executed first, followed by the validating phase.  
 The difference between the two kinds of admission controller webhooks is pretty much self-explanatory: `mutating admission webhooks` may mutate the objects, while `validating admission webhooks` may not.
 
-![APIServer Webhook](admission-controller-phases.png "APIServer Webhook")
+![APIServer Webhook](./images/admission-controller-phases.png "APIServer Webhook")
 
 Kubernetes comes with a number of built in [admission controllers](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/#what-does-each-admission-controller-do) but you can create your owns for your specific needs.
 
@@ -181,4 +181,3 @@ Istio is comming with a collection of CRD's which are used to manage how the ser
 In this Istio version some CRDs may be deprecated but are kept for backward compatibility. `Mixer is deprecated. The functionality provided by Mixer is being moved into the Envoy proxies. Use of Mixer with Istio will only be supported through the 1.7 release of Istio.`.
 
 **[Back to Main Page](../README.md)**
-

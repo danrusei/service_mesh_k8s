@@ -202,8 +202,6 @@ istioctl dashboard grafana
 http://localhost:3000
 ```
 
-Pictures from Grafana:
+Check out [Grafana Integration](./sm_Istio/Integrations.md#grafana-integration) for the graphs.
 
-![grafana general](./images/grafana_general.png "Grafana General")
-![grafana inbound](./images/grafana_inbound.png "Grafana Inbound")
-![grafana general](./images/grafana_outbound.png "Grafana Outbound")
+**[Back to Main Page](../README.md)**

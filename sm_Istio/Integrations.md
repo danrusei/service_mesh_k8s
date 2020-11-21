@@ -36,7 +36,7 @@ Best part, Istio offers a set of preconfigured dashboards for all of the most im
 * **Performance Dashboard** monitors the resource usage of the mesh.
 * **Control Plane Dashboard** monitors the health and performance of the control plane.
 
-These are the installed resources while deploying grafana to the cluster. Notice that it uses istio-namespace as it is an custom grafana instalation to seamlessly integrate with Istio. 
+These are the installed resources while deploying grafana to the cluster. Notice that it uses istio-namespace as it is an custom grafana instalation to seamlessly integrate with Istio.
 
 ```bash
 $ kapp deploy -a grafana -f https://raw.githubusercontent.com/istio/istio/release-1.7/samples/addons/grafana.yaml
@@ -50,7 +50,7 @@ istio-system  grafana                            ConfigMap       -       -    cr
 ^             grafana                            Service         -       -    create  -       reconcile  -   -  
 ^             grafana                            ServiceAccount  -       -    create  -       reconcile  -   -  
 ^             istio-grafana-dashboards           ConfigMap       -       -    create  -       reconcile  -   -  
-^             istio-services-grafana-dashboards  ConfigMap       -       -    create  -       reconcile  -   - 
+^             istio-services-grafana-dashboards  ConfigMap       -       -    create  -       reconcile  -   -
 ```
 
 or using:
@@ -65,5 +65,11 @@ Now you can issue the below command which port forward to the right deployment a
 istioctl dashboard grafana
 http://localhost:3000
 ```
+
+## Grafana Integration
+
+![grafana general](./images/grafana_general.png "Grafana General")
+![grafana inbound](./images/grafana_inbound.png "Grafana Inbound")
+![grafana general](./images/grafana_outbound.png "Grafana Outbound")
 
 **[Back to Main Page](../README.md)**

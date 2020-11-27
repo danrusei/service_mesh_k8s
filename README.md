@@ -20,11 +20,11 @@ The below steps are documeneted within separate pages, recommended to follow in 
   * Traffic Management
     * Traffic Shifting
     * Request Routing
-* **[Linkerd](linkerd.io)** - TODO
-* **[OpenServiceMesh](openservicemesh.io)** - TODO
-* **[Consul](consul.io)** - TODO
-* **[Kuma](kuma.io)** - TODO
-* **[TraefikMesh](traefik.io/traefik-mesh)** - TODO
+* **[Linkerd](https://linkerd.io)** - TODO
+* **[OpenServiceMesh](https://openservicemesh.io)** - TODO
+* **[Consul](https://consul.io)** - TODO
+* **[Kuma](https://kuma.io)** - TODO
+* **[TraefikMesh](https://traefik.io/traefik-mesh)** - TODO
 
 ## The Microservice App
 

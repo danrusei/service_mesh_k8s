@@ -9,6 +9,7 @@ The below steps are documeneted within separate pages, recommended to follow in 
 
 * **[Kind Cluster - initial setup](./setup-kind/README.md)**
 * **[Istio](./sm_Istio/README.md)**
+  * [Fast Forward - skip the installation details](./sm_Istio/fast_forward.md)
   * [Install](./sm_Istio/Install.md)
     * [Installed components](./sm_Istio/Installed_components.md)
     * [Integrations](./sm_Istio/Integrations.md)
@@ -16,7 +17,9 @@ The below steps are documeneted within separate pages, recommended to follow in 
   * [Security](./sm_Istio/Security.md)
     * [Authentication & MTLS](./sm_Istio/Authentication.md)
     * [Authorization](./sm_Istio/Authorization.md)
-  * Traffic split
+  * Traffic Management
+    * Traffic Shifting
+    * Request Routing
 * **Linkerd**
   * Install
   * Security

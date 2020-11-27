@@ -71,15 +71,26 @@ configmap/istio-services-grafana-dashboards created
 * Check if everything was installed and working
 
 ```bash
-$ kubectl get deployments.apps --all-namespaces
-NAMESPACE            NAME                     READY   UP-TO-DATE   AVAILABLE   AGE
-istio-system         grafana                  1/1     1            1           3m1s
-istio-system         istio-egressgateway      1/1     1            1           22m
-istio-system         istio-ingressgateway     1/1     1            1           22m
-istio-system         istiod                   1/1     1            1           22m
-istio-system         prometheus               1/1     1            1           3m2s
-kube-system          coredns                  2/2     2            2           28m
-local-path-storage   local-path-provisioner   1/1     1            1           28m
+$ kubectl get pods --all-namespaces
+NAMESPACE            NAME                                               READY   STATUS    RESTARTS   AGE
+istio-system         grafana-57bb676c4c-6dm9r                           1/1     Running   0          29m
+istio-system         istio-egressgateway-844fd8c8c6-tc994               1/1     Running   0          48m
+istio-system         istio-ingressgateway-67fc4949df-xdg7s              1/1     Running   0          48m
+istio-system         istiod-766d57484-9nxwp                             1/1     Running   0          48m
+istio-system         prometheus-7c8bf6df84-25mz9                        2/2     Running   0          29m
+kube-system          coredns-f9fd979d6-bmk4c                            1/1     Running   0          55m
+kube-system          coredns-f9fd979d6-bzs62                            1/1     Running   0          55m
+kube-system          etcd-kind-istio-control-plane                      1/1     Running   0          55m
+kube-system          kindnet-5v2ct                                      1/1     Running   0          54m
+kube-system          kindnet-gkf2f                                      1/1     Running   0          55m
+kube-system          kindnet-rgdhb                                      1/1     Running   0          54m
+kube-system          kube-apiserver-kind-istio-control-plane            1/1     Running   0          55m
+kube-system          kube-controller-manager-kind-istio-control-plane   1/1     Running   0          55m
+kube-system          kube-proxy-jw5l4                                   1/1     Running   0          54m
+kube-system          kube-proxy-tj7cn                                   1/1     Running   0          54m
+kube-system          kube-proxy-z26sm                                   1/1     Running   0          55m
+kube-system          kube-scheduler-kind-istio-control-plane            1/1     Running   0          55m
+local-path-storage   local-path-provisioner-78776bfc44-hzd6q            1/1     Running   0          55m
 ```
 
 Now you can Skip the Istio Installation detailed process and move to application deployment and test out Istio features.

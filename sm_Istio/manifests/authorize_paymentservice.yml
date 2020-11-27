@@ -1,0 +1,19 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: checkoutservice-to-paymentservice
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: currencyservice
+  action: ALLOW
+  rules:
+  # - from:
+  #   - source:
+  #       principals: ["cluster.local/ns/default/sa/checkoutservice"]
+  #   - source:
+  #       principals: ["cluster.local/ns/default/sa/frontendservice"]
+  - to:
+    - operation:
+        ports: ["7000"]

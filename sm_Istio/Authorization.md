@@ -13,13 +13,43 @@ An authorization policy includes a selector, an action, and a list of rules:
 
 [Here you can inspect](https://istio.io/latest/docs/reference/config/security/authorization-policy/) all the knobs and controls also [authorization policy conditions](https://istio.io/latest/docs/reference/config/security/conditions/), where you can specifies a list of additional conditions of a request.
 
-TODO !!!!! https://raw.githubusercontent.com/istio/istio/release-1.8/samples/bookinfo/platform/kube/bookinfo.yaml
-!!! I may need to create service account for each service, in order to be used with `principals`
-!!! I may have to copy the manifests local and modify them
+## Create the service accounts
+
+In order to give a strong identity to each service, service accounts are created and the deployments are patched.
+
+```bash
+$ make app_sa
+serviceaccount/ad created
+serviceaccount/cart created
+serviceaccount/checkout created
+serviceaccount/currency created
+serviceaccount/email created
+serviceaccount/frontend created
+serviceaccount/loadgenerator created
+serviceaccount/payment created
+serviceaccount/productcatalog created
+serviceaccount/recommendation created
+serviceaccount/redis created
+serviceaccount/shipping created
+deployment.apps/adservice patched
+deployment.apps/cartservice patched
+deployment.apps/checkoutservice patched
+deployment.apps/currencyservice patched
+deployment.apps/emailservice patched
+deployment.apps/frontend patched
+deployment.apps/loadgenerator patched
+deployment.apps/paymentservice patched
+deployment.apps/productcatalogservice patched
+deployment.apps/recommendationservice patched
+deployment.apps/redis-cart patched
+deployment.apps/shippingservice patched
+```
 
 ## Simple Authorization Policy
 
-The below policy allows the services from the `default` namespace to communicate on port `7000` with `currencyservice`.
+When you use peer authentication policies and mutual TLS, Istio extracts the identity from the peer authentication into the `source.principal`. These principals can be used to set authorization policies and telemetry output.
+The below policy allow access to `currencyservice` only to `checkoutservice` and `frontendservice`. 
+It restricts to `default` namespace, to services which has `checkout` and `frontend` service accounts, to destination port `7000`.
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
@@ -33,18 +63,18 @@ spec:
       app: currencyservice
   action: ALLOW
   rules:
-  # - from:
-  #   - source:
-  #       principals: ["cluster.local/ns/default/sa/checkoutservice"]
-  #   - source:
-  #       principals: ["cluster.local/ns/default/sa/frontendservice"]
+  - from:
+    - source:
+        principals: ["cluster.local/ns/default/sa/checkout"]
+    - source:
+        principals: ["cluster.local/ns/default/sa/frontend"]
   - to:
     - operation:
         ports: ["7000"]
 ```
 
-TODO: Investigate why is not working when the from source is defined
-
 ## Another Authorization Policy with different details
+
+Create another one and play with HTTP methods, from generator to frontend
 
 **[Back to Main Page](../README.md)**

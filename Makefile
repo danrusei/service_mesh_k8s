@@ -22,11 +22,16 @@ istio_prepare:
 istio_integrations:
 	kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.7/samples/addons/prometheus.yaml
 	kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.7/samples/addons/grafana.yaml
-	# kubectl apply -f https://raw.githubusercontent.com/istio/istio/release-1.8/samples/addons/kiali.yaml
 
-## deploy: deploy the microservices App
-deploy:
+## app_deploy: deploys the microservices App
+app_deploy:
 	skaffold run
+
+## app_sa: creates service account for each service and patch the deployments
+app_sa:
+	kubectl apply -f sm_Istio/app_manifests/
+	chmod 700 sm_Istio/apply_patch.sh
+	./sm_Istio/apply_patch.sh
 
 ## port_forward: forwards the port 8080 to deployment/frontend 
 port_forward:

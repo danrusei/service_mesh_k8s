@@ -28,6 +28,7 @@ app_deploy:
 	skaffold run
 
 ## app_sa: creates service account for each service and patch the deployments
+# give strong identity to each service (create the service accounts and patch the deployments)
 app_sa:
 	kubectl apply -f sm_Istio/app_manifests/
 	chmod 700 sm_Istio/apply_patch.sh

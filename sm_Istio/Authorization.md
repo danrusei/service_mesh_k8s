@@ -45,11 +45,11 @@ deployment.apps/redis-cart patched
 deployment.apps/shippingservice patched
 ```
 
-## Simple Authorization Policy
+## Example 1: Authorize checkout and frontend & service to communicate to currency service on port 7000
 
-When you use peer authentication policies and mutual TLS, Istio extracts the identity from the peer authentication into the `source.principal`. These principals can be used to set authorization policies and telemetry output.
-The below policy allow access to `currencyservice` only to `checkoutservice` and `frontendservice`. 
-It restricts to `default` namespace, to services which has `checkout` and `frontend` service accounts, to destination port `7000`.
+When peer authentication policies are used together with mutual TLS, Istio extracts the identity from the peer authentication into the `source.principal`. These principals can be used to set authorization policies and telemetry output.
+The below policy we allow access to `currencyservice` only from `checkoutservice` and from `frontendservice`.
+It is applied to `default` namespace and the destination port `7000`.
 
 ```yaml
 apiVersion: security.istio.io/v1beta1
@@ -73,8 +73,43 @@ spec:
         ports: ["7000"]
 ```
 
-## Another Authorization Policy with different details
+## Example 2: Authorize HTTP GET calls from the loadgenerator 
 
-Create another one and play with HTTP methods, from generator to frontend
+Run the following command to create the policy allow-http-only-from-generator:
+
+```bash
+kubectl apply -f sm_Istio/istio_manifests/authorize_http.yml
+```
+
+This allows the generator workload, which issues requests using the cluster.local/ns/default/sa/loadgenerator service account, to access the frontend workload through GET methods.
+
+```yaml
+apiVersion: "security.istio.io/v1beta1"
+kind: "AuthorizationPolicy"
+metadata:
+  name: "allow-http-only-from-generator"
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  rules:
+  - from:
+    - source:
+        principals: ["cluster.local/ns/default/sa/loadgenerator"]
+    to:
+    - operation:
+        methods: ["GET"]
+```
+
+Once the policy is applied its `Post` requests are `Forbidden`, as it can be seen in the below chart:
+
+![Forbidden HTTP Requests](./images/forbidden_response.png "Forbidden HTTP Requests")
+
+Check out the `Istio Workload Dashboard` from Graphana, run it in a different terminal:
+
+```bash
+./istio-1.7.4/bin/istioctl dashboard grafana
+```
 
 **[Back to Main Page](../README.md)**
